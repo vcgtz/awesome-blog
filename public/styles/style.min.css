@@ -620,9 +620,9 @@ video {
   }
 }
 
-.text-blue-400 {
+.text-red-700 {
   --tw-text-opacity: 1;
-  color: rgba(96, 165, 250, var(--tw-text-opacity));
+  color: rgba(185, 28, 28, var(--tw-text-opacity));
 }
 
 *, ::before, ::after {
