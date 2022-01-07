@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Dashboard home
 router.get('/', (req, res) => {
-  res.send('Dashboard');
+  res.render('dashboard/index.hbs');
 });
 
 module.exports = router;
