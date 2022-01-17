@@ -25,3 +25,4 @@ coverage
 benchmarks/graphs
 
 .env
+yarn.lock
