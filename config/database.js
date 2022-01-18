@@ -1,4 +1,14 @@
 const mongoose = require('mongoose');
+const User = require('../database/models/UserSchema');
+const { createAdminUser } = require('../database/utils');
+
+mongoose.connection.on('open', () => {
+  User.find({}, async (err, users) => {
+    if (!users.length && process.env.ADMIN_USERNAME) {
+      createAdminUser();
+    }
+  });
+});
 
 const databaseConnect = async () => {
   try {
