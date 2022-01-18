@@ -13,20 +13,23 @@
       <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div class="mx-auto w-full max-w-sm lg:w-96">
           <div>
-            <img class="h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+            <img class="h-12 w-auto" src="./images/rocketship.svg" alt="Rocket ship">
             <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
               Inicia sesión
             </h2>
+            {{!
             <p class="mt-2 text-sm text-gray-600">
               O
               <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
                 regístrate
               </a>
             </p>
+            }}
           </div>
 
           <div class="mt-8">
             <div>
+              {{!
               <div>
                 <p class="text-sm font-medium text-gray-700">
                   Iniciar sesión con redes sociales
@@ -61,7 +64,9 @@
                   </div>
                 </div>
               </div>
+              }}
 
+              {{!
               <div class="mt-6 relative">
                 <div class="absolute inset-0 flex items-center" aria-hidden="true">
                   <div class="w-full border-t border-gray-300"></div>
@@ -72,6 +77,7 @@
                   </span>
                 </div>
               </div>
+              }}
             </div>
 
             <div class="mt-6">
@@ -81,7 +87,7 @@
                     Usuario
                   </label>
                   <div class="mt-1">
-                    <input id="user" name="user" type="text" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <input id="user" name="user" type="text" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                   </div>
                 </div>
 
@@ -90,10 +96,11 @@
                     Contraseña
                   </label>
                   <div class="mt-1">
-                    <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-sm shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
                   </div>
                 </div>
 
+                {{!
                 <div class="flex items-center justify-between">
                   <div class="flex items-center">
                     <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
@@ -108,9 +115,10 @@
                     </a>
                   </div>
                 </div>
+                }}
 
                 <div>
-                  <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-sm shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     Iniciar sesión
                   </button>
                 </div>
