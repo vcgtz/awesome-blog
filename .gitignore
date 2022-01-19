@@ -28,5 +28,5 @@ benchmarks/graphs
 yarn.lock
 
 # Style files
-/public/style/style.css
-/public/style/style.min.css
+public/styles/style.css
+public/styles/style.min.css
