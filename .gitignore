@@ -26,3 +26,7 @@ benchmarks/graphs
 
 .env
 yarn.lock
+
+# Style files
+/public/style/style.css
+/public/style/style.min.css
