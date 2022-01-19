@@ -1,13 +1,17 @@
 const User = require('./models/UserSchema');
+const bcryptjs = require('bcryptjs');
 
 const createAdminUser = async () => {
+  const salt = bcryptjs.genSaltSync();
+  const password = bcryptjs.hashSync(process.env.ADMIN_PASSWORD, salt);
+
   try {
     const user = new User({
       name: process.env.ADMIN_NAME,
       lastname: process.env.ADMIN_LASTNAME,
       username: process.env.ADMIN_USERNAME,
       email: process.env.ADMIN_EMAIL,
-      password: process.env.ADMIN_PASSWORD,
+      password: password,
       brief: '',
       profile_image: '',
       role: process.env.ADMIN_ROLE,
