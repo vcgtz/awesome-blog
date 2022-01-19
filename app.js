@@ -21,11 +21,10 @@ const start = async () => {
 
   app.use(cookieParser());
   app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(session({
-    secret: 'keyboard cat',
+  app.use(session({ 
+    secret: process.env.SESSION_KEY,
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    saveUninitialized: false
   }));
 
   app.use(passport.initialize());
