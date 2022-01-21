@@ -6,7 +6,9 @@ const CategoryController = {
   },
 
   create (req, res) {
-    res.render('dashboard/category/create.hbs');
+    res.render('dashboard/category/create.hbs', {
+      csrfToken: req.csrfToken()
+    });
   },
 
   async store (req, res) {
