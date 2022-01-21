@@ -13,7 +13,6 @@ const CategorySchema = Schema({
     type: String,
     required: [true, 'Category slug is required'],
   },
-  timestamp
 }, {
   timestamps: true
 });

@@ -13,5 +13,6 @@ router.get('/', isloggedIn, DashboardController.home);
 router.get('/categories', CategoryController.index);
 router.get('/categories/create', CategoryController.create);
 router.get('/categories/:id/edit', CategoryController.edit);
+router.post('/categories', CategoryController.store);
 
 module.exports = router;

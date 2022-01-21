@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
+const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -21,6 +22,7 @@ const start = async () => {
 
   app.use(cookieParser());
   app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(methodOverride('X-HTTP-Method-Override'));
   app.use(session({ 
     secret: process.env.SESSION_KEY,
     resave: false,

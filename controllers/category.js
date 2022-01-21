@@ -1,3 +1,5 @@
+const Category = require('../database/models/CategorySchema');
+
 const CategoryController = {
   index (req, res) {
     res.send('index');
@@ -7,8 +9,27 @@ const CategoryController = {
     res.render('dashboard/category/create.hbs');
   },
 
-  store (req, res) {
+  async store (req, res) {
+    let slug = req.body.slug;
 
+    if (!slug) {
+      slug = req.body.name.replaceAll(' ', '-').toLowerCase();
+    }
+
+    const category = new Category({
+      name: req.body.name,
+      description: req.body.description,
+      slug: slug
+    });
+
+    try {
+      await category.save();
+
+      res.redirect('/dashboard/categories');
+    } catch (err) {
+      console.error(err);
+      res.redirect('/dashboard/categories/create')
+    }
   },
 
   show (req, res) {

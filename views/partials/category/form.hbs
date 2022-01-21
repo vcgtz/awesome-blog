@@ -1,4 +1,4 @@
-<form class="space-y-8 divide-y divide-gray-200">
+<form class="space-y-8 divide-y divide-gray-200" method="{{ method }}" action="/dashboard/categories">
   <div class="space-y-8 divide-y divide-gray-200">
     <div>
       <div>
@@ -16,16 +16,16 @@
             Name
           </label>
           <div class="mt-1">
-            <input type="text" name="name" id="name" autocomplete="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+            <input required type="text" name="name" id="name" autocomplete="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
           </div>
         </div>
 
         <div class="sm:col-span-6">
-          <label for="Description" class="block text-sm font-medium text-gray-700">
+          <label for="description" class="block text-sm font-medium text-gray-700">
             Description
           </label>
           <div class="mt-1">
-            <textarea id="Description" name="Description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+            <textarea required id="description" name="description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
           </div>
           <p class="mt-2 text-sm text-gray-500">A full description of your category.</p>
         </div>
@@ -43,11 +43,11 @@
       </div>
       <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
         <div class="sm:col-span-6">
-          <label for="Slug" class="block text-sm font-medium text-gray-700">
+          <label for="slug" class="block text-sm font-medium text-gray-700">
             Slug
           </label>
           <div class="mt-1">
-            <input type="text" name="Slug" id="Slug" autocomplete="Slug" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+            <input type="text" name="slug" id="slug" autocomplete="slug" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
           </div>
           <p class="mt-2 text-sm text-gray-500">Leave blank to generate automatically.</p>
         </div>
