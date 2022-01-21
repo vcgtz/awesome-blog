@@ -4,7 +4,7 @@ const CategoryController = {
   },
 
   create (req, res) {
-    res.send('create');
+    res.render('dashboard/category/create.hbs');
   },
 
   store (req, res) {

@@ -1,13 +1,15 @@
 module.exports = {
-  purge: [
+  content: [
     "./views/**/*.hbs"
   ],
-  darkMode: false, // or 'media' or 'class'
+  media: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
 }
