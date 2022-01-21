@@ -1,5 +1,5 @@
 {
-  "name": "awesome-blog",
+  "name": "vg-blog",
   "version": "0.0.1",
   "description": "My personal blog",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vcgtz/awesome-blog.git"
+    "url": "git+https://github.com/vcgtz/vg-blog.git"
   },
   "author": "Vicente Gutiérrez @vcgtz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vcgtz/awesome-blog/issues"
+    "url": "https://github.com/vcgtz/vg-blog/issues"
   },
-  "homepage": "https://github.com/vcgtz/awesome-blog#readme",
+  "homepage": "https://github.com/vcgtz/vg-blog#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
