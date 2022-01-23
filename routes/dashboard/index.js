@@ -5,8 +5,8 @@ const csrfProtection = csrf({ cookie: true });
 
 const { isloggedIn } = require('../../middlewares/auth');
 
-const DashboardController = require('../../controllers/dashboard');
-const CategoryController = require('../../controllers/category');
+const DashboardController = require('../../controllers/dashboard/dashboard');
+const CategoryController = require('../../controllers/dashboard/category');
 
 // Dashboard
 router.get('/', isloggedIn, DashboardController.home);

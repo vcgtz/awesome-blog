@@ -1,4 +1,4 @@
-const Category = require('../database/models/CategorySchema');
+const Category = require('../../database/models/CategorySchema');
 
 const CategoryController = {
   index (req, res) {
