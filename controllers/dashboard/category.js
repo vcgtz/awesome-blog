@@ -7,6 +7,7 @@ const CategoryController = {
       .exec();
 
     res.render('dashboard/category/index.hbs', {
+      csrfToken: req.csrfToken(),
       categories
     });
   },
@@ -83,8 +84,14 @@ const CategoryController = {
     }
   },
 
-  destroy (req, res) {
+  async destroy (req, res) {
+    try {
+      const category = await Category.findByIdAndDelete(req.params.id).exec();
+    } catch (err) {
+      console.error(err);
+    }
 
+    return res.redirect('/dashboard/categories');
   },
 };
 

@@ -12,10 +12,11 @@ const CategoryController = require('../../controllers/dashboard/category');
 router.get('/', isloggedIn, DashboardController.home);
 
 // Categories
-router.get('/categories', CategoryController.index);
+router.get('/categories', csrfProtection, CategoryController.index);
 router.get('/categories/create', csrfProtection, CategoryController.create);
 router.get('/categories/:id/edit', csrfProtection, CategoryController.edit);
 router.post('/categories', csrfProtection, CategoryController.store);
 router.put('/categories/:id', csrfProtection, CategoryController.update);
+router.delete('/categories/:id', csrfProtection, CategoryController.destroy);
 
 module.exports = router;
