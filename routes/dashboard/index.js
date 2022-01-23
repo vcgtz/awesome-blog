@@ -16,5 +16,6 @@ router.get('/categories', CategoryController.index);
 router.get('/categories/create', csrfProtection, CategoryController.create);
 router.get('/categories/:id/edit', csrfProtection, CategoryController.edit);
 router.post('/categories', csrfProtection, CategoryController.store);
+router.put('/categories/:id', csrfProtection, CategoryController.update);
 
 module.exports = router;

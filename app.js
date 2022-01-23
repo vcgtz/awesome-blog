@@ -22,7 +22,7 @@ const start = async () => {
 
   app.use(cookieParser());
   app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(methodOverride('X-HTTP-Method-Override'));
+  app.use(methodOverride('_method'));
   app.use(session({ 
     secret: process.env.SESSION_KEY,
     resave: false,

@@ -36,7 +36,7 @@ const CategoryController = {
       res.redirect('/dashboard/categories');
     } catch (err) {
       console.error(err);
-      res.redirect('/dashboard/categories/create')
+      res.redirect('/dashboard/categories/create');
     }
   },
 
@@ -62,8 +62,25 @@ const CategoryController = {
     }
   },
 
-  update (req, res) {
+  async update (req, res) {
+    let slug = req.body.slug;
 
+    if (!slug) {
+      slug = req.body.name.replaceAll(' ', '-').toLowerCase();
+    }
+
+    try {
+      await Category.findByIdAndUpdate(req.params.id, {
+        name: req.body.name,
+        description: req.body.description,
+        slug
+      });
+
+      res.redirect('/dashboard/categories');
+    } catch (err) {
+      console.error(err);
+      res.redirect(`/dashboard/categories/${req.params.id}/edit`);
+    }
   },
 
   destroy (req, res) {
