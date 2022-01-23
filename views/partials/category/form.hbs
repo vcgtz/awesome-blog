@@ -18,7 +18,7 @@
             Name
           </label>
           <div class="mt-1">
-            <input required type="text" name="name" id="name" autocomplete="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+            <input required type="text" name="name" id="name" autocomplete="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" value="{{ category.name }}">
           </div>
         </div>
 
@@ -27,7 +27,7 @@
             Description
           </label>
           <div class="mt-1">
-            <textarea required id="description" name="description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+            <textarea required id="description" name="description" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md">{{ category.description }}</textarea>
           </div>
           <p class="mt-2 text-sm text-gray-500">A full description of your category.</p>
         </div>
@@ -49,7 +49,7 @@
             Slug
           </label>
           <div class="mt-1">
-            <input type="text" name="slug" id="slug" autocomplete="slug" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+            <input type="text" name="slug" id="slug" autocomplete="slug" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" value="{{ category.slug }}">
           </div>
           <p class="mt-2 text-sm text-gray-500">Leave blank to generate automatically.</p>
         </div>

@@ -45,11 +45,21 @@ const CategoryController = {
   },
 
   async edit (req, res) {
-    // res.send('edit ' + req.params.id);
+    try {
+      const category = await Category.findById(req.params.id).exec();
 
-    res.render('dashboard/category/create.hbs', {
-      csrfToken: req.csrfToken()
-    });
+      if (!category) {
+        return res.status(404).send('Not found');
+      }
+  
+      res.render('dashboard/category/create.hbs', {
+        csrfToken: req.csrfToken(),
+        category,
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send('Internal error');
+    }
   },
 
   update (req, res) {
