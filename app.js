@@ -31,9 +31,14 @@ const start = async () => {
 
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use((req, res, next) => {
+    app.locals.currentUrl = req.originalUrl;
+    next();
+  });
 
   hbs.registerPartials(__dirname + '/views/partials');
   hbs.registerHelper('isEven', val => val % 2 === 0);
+  hbs.registerHelper('isTabActive', (section, currentUrl) => currentUrl === section);
 
   // Routes
   app.use('/', router);

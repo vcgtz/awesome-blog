@@ -9,7 +9,7 @@ const DashboardController = require('../../controllers/dashboard/dashboard');
 const CategoryController = require('../../controllers/dashboard/category');
 
 // Dashboard
-router.get('/', isloggedIn, DashboardController.home);
+router.get('/', DashboardController.home);
 
 // Categories
 router.get('/categories', csrfProtection, CategoryController.index);
