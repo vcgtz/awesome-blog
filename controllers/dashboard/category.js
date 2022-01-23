@@ -44,8 +44,12 @@ const CategoryController = {
 
   },
 
-  edit (req, res) {
-    res.send('edit ' + req.params.id);
+  async edit (req, res) {
+    // res.send('edit ' + req.params.id);
+
+    res.render('dashboard/category/create.hbs', {
+      csrfToken: req.csrfToken()
+    });
   },
 
   update (req, res) {

@@ -14,7 +14,7 @@ router.get('/', isloggedIn, DashboardController.home);
 // Categories
 router.get('/categories', CategoryController.index);
 router.get('/categories/create', csrfProtection, CategoryController.create);
-router.get('/categories/:id/edit', CategoryController.edit);
+router.get('/categories/:id/edit', csrfProtection, CategoryController.edit);
 router.post('/categories', csrfProtection, CategoryController.store);
 
 module.exports = router;
