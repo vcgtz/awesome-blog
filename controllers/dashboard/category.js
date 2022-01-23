@@ -1,8 +1,14 @@
 const Category = require('../../database/models/CategorySchema');
 
 const CategoryController = {
-  index (req, res) {
-    res.send('index');
+  async index (req, res) {
+    const categories = await Category.find({})
+      .sort({created_at: 'desc'})
+      .exec();
+
+    res.render('dashboard/category/index.hbs', {
+      categories
+    });
   },
 
   create (req, res) {

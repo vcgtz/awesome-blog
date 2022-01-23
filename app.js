@@ -33,6 +33,7 @@ const start = async () => {
   app.use(passport.session());
 
   hbs.registerPartials(__dirname + '/views/partials');
+  hbs.registerHelper('isEven', val => val % 2 === 0);
 
   // Routes
   app.use('/', router);
