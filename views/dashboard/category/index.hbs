@@ -11,7 +11,7 @@
       </p>
     </div>
     <div class="text-sm">
-      <a href="/dashboard/categories/create" class="text-indigo-600 hover:text-indigo-900">Add one</a>
+      <a href="/dashboard/categories/create" class="text-green-500 hover:text-green-700">Add one</a>
     </div>
   </div>
 
@@ -37,11 +37,11 @@
                   {{ this.name }}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a href="/dashboard/categories/{{ this.id }}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                  <a href="/dashboard/categories/{{ this.id }}/edit" class="text-blue-500 hover:text-blue-700">Edit</a>
                   or
                   <form class="inline-block" method="POST" action="/dashboard/categories/{{ this.id }}?_method=DELETE">
                     <input type="hidden" name="_csrf" value="{{ ../csrfToken }}">
-                    <button type="submit" class="text-indigo-600 hover:text-indigo-900">Delete</a>
+                    <button type="submit" class="text-red-500 hover:text-red-700">Delete</a>
                   </form>
                 </td>
               </tr>
