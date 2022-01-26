@@ -7,9 +7,6 @@
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           {{ title }}
         </h3>
-        <p class="mt-1 text-sm text-gray-500">
-          {{ description }}
-        </p>
       </div>
 
       <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
@@ -32,7 +29,6 @@
           <div class="mt-1">
             <textarea required id="description" name="description" rows="3" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border border-gray-300 rounded-md">{{ category.description }}</textarea>
           </div>
-          <p class="mt-2 text-sm text-gray-500">A full description of your category.</p>
           {{#if errors.description}}
           <p class="text-sm text-red-500">{{ errors.description }}</p>
           {{/if}}
@@ -43,11 +39,8 @@
     <div class="pt-8">
       <div>
         <h3 class="text-lg leading-6 font-medium text-gray-900">
-          Other information
+          Extra information
         </h3>
-        <p class="mt-1 text-sm text-gray-500">
-          Some extra needed information.
-        </p>
       </div>
 
       <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
