@@ -37,6 +37,14 @@ const UserSchema = Schema({
     type: Boolean,
     default: true,
   },
+  posts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref:'Post'
+    }
+  ],
+}, {
+  timestamps: true
 });
 
 module.exports = model('User', UserSchema);
