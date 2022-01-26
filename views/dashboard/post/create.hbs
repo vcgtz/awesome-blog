@@ -14,42 +14,30 @@
 
 {{#> dashboard/footer}}
 <script src="/js/prism.js"></script>
-  <script>
-    /*tinymce.init({
-      selector: 'textarea',
-      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak codesample',
-      toolbar_mode: 'floating codesample',
-      codesample_global_prismjs: true,
-      codesample_languages: [
-        { text: 'HTML/XML', value: 'markup' },
-        { text: 'JavaScript', value: 'javascript' },
-        { text: 'Go', value: 'go' },
-        { text: 'Python', value: 'python' },
-      ],
-    });*/
-
-    tinymce.init({
-      selector: '#content',
-      height: 500,
-      plugins: [
-        'advlist autolink link image lists charmap print preview hr anchor pagebreak',
-        'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-        'table emoticons template paste help codesample'
-      ],
-      toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
-        'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
-        'forecolor backcolor emoticons | help',
-      menu: {
-        favs: {title: 'My Favorites', items: 'codesample | code visualaid | searchreplace | emoticons'}
-      },
-      menubar: 'favs file edit view insert format tools table help',
-      codesample_global_prismjs: true,
-      codesample_languages: [
-        { text: 'HTML/XML', value: 'markup' },
-        { text: 'JavaScript', value: 'javascript' },
-        { text: 'Go', value: 'go' },
-        { text: 'Python', value: 'python' },
-      ],
-    });
-  </script>
+<script>
+  tinymce.init({
+    selector: '#content',
+    height: 500,
+    plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help codesample'
+    ],
+    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+      'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+      'forecolor backcolor emoticons | help',
+    menu: {
+      favs: {title: 'My Favorites', items: 'codesample | code visualaid | searchreplace | emoticons'}
+    },
+    menubar: 'favs file edit view insert format tools table help',
+    codesample_global_prismjs: true,
+    codesample_languages: [
+      { text: 'HTML/XML', value: 'markup' },
+      { text: 'JavaScript', value: 'javascript' },
+      { text: 'Go', value: 'go' },
+      { text: 'Python', value: 'python' },
+    ],
+  });
+</script>
+<script src="/js/post.js"></script>
 {{/dashboard/footer}}
