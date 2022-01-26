@@ -1,3 +1,5 @@
+const Category = require('../../database/models/CategorySchema');
+
 const PostController = {
   async index(req, res) {
     
@@ -5,9 +7,13 @@ const PostController = {
 
   async create(req, res) {
     const [errors] = req.flash('errors');
+    const categories = await Category.find({})
+      .sort({created_at: 'desc'})
+      .exec();
 
     res.render('dashboard/post/create.hbs', {
       csrfToken: req.csrfToken(),
+      categories,
       errors
     });
   },
