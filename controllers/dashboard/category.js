@@ -1,4 +1,5 @@
 const Category = require('../../database/models/CategorySchema');
+const { validationResult } = require('express-validator');
 
 const CategoryController = {
   async index (req, res) {
@@ -13,8 +14,11 @@ const CategoryController = {
   },
 
   create (req, res) {
+    const [errors] = req.flash('errors');
+
     res.render('dashboard/category/create.hbs', {
-      csrfToken: req.csrfToken()
+      csrfToken: req.csrfToken(),
+      errors
     });
   },
 

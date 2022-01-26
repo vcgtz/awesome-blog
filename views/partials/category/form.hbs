@@ -19,6 +19,9 @@
           </label>
           <div class="mt-1">
             <input required type="text" name="name" id="name" autocomplete="name" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" value="{{ category.name }}">
+            {{#if errors.name}}
+            <p class="text-sm text-red-500">{{ errors.name }}</p>
+            {{/if}}
           </div>
         </div>
 
@@ -30,6 +33,9 @@
             <textarea required id="description" name="description" rows="3" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border border-gray-300 rounded-md">{{ category.description }}</textarea>
           </div>
           <p class="mt-2 text-sm text-gray-500">A full description of your category.</p>
+          {{#if errors.description}}
+          <p class="text-sm text-red-500">{{ errors.description }}</p>
+          {{/if}}
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
 const passport = require('./config/passport');
 
 const hbs = require('hbs');
@@ -31,6 +32,7 @@ const start = async () => {
 
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(flash());
   app.use((req, res, next) => {
     app.locals.currentUrl = req.originalUrl;
     next();
