@@ -1,0 +1,12 @@
+{{> dashboard/header title="Posts" }}
+
+<div class="border-2 border-dashed border-gray-200 rounded-lg h-full p-4">
+  {{> dashboard/post/form
+    title="Post information"
+    description="Here you can create your own posts."
+    csrfToken=csrfToken
+    errors=errors
+  }}
+</div>
+
+{{> dashboard/footer}}

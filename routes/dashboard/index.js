@@ -7,6 +7,7 @@ const { body } = require('express-validator');
 const { categoryValidations } = require('../../middlewares/auth');
 const DashboardController = require('../../controllers/dashboard/dashboard');
 const CategoryController = require('../../controllers/dashboard/category');
+const PostController = require('../../controllers/dashboard/post');
 
 // Dashboard
 router.get('/', DashboardController.home);
@@ -23,5 +24,13 @@ router.post('/categories', [
 router.get('/categories/:id/edit', [csrfProtection], CategoryController.edit);
 router.put('/categories/:id', [csrfProtection], CategoryController.update);
 router.delete('/categories/:id', [csrfProtection], CategoryController.destroy);
+
+// Posts
+router.get('/posts', [csrfProtection], PostController.index);
+router.get('/posts/create', [csrfProtection], PostController.create);
+router.post('/posts', [csrfProtection], PostController.store);
+router.get('/posts/:id/edit', [csrfProtection], PostController.edit);
+router.put('/posts/:id', [csrfProtection], PostController.update);
+router.delete('/posts/:id', [csrfProtection], PostController.destroy);
 
 module.exports = router;

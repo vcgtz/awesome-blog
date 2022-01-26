@@ -13,7 +13,7 @@ const CategoryController = {
     });
   },
 
-  create (req, res) {
+  async create (req, res) {
     const [errors] = req.flash('errors');
 
     res.render('dashboard/category/create.hbs', {
@@ -45,7 +45,7 @@ const CategoryController = {
     }
   },
 
-  show (req, res) {
+  async show (req, res) {
 
   },
 
