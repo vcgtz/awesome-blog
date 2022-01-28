@@ -25,7 +25,7 @@ const UserSchema = Schema({
   brief: {
     type: String,
   },
-  profile_image: {
+  profileImage: {
     type: String,
   },
   role: {

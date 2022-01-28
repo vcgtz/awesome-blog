@@ -25,7 +25,7 @@ const PostSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  published_at: {
+  publishedAt: {
     type: Date,
     defaul: null
   },
