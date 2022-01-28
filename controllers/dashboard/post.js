@@ -28,14 +28,14 @@ const PostController = {
 
   async store(req, res) {
     let slug = req.body.slug;
-    let published_at = null;
+    let publishedAt = null;
 
     if (!slug) {
       slug = req.body.title.replaceAll(' ', '-').toLowerCase();
     }
 
     if (req.body.publish) {
-      published_at = new Date();
+      publishedAt = new Date();
     }
 
     const post = new Post({
@@ -45,7 +45,7 @@ const PostController = {
       content: req.body.content,
       category: req.body.category,
       user: req.user.id,
-      publishedAt: published_at
+      publishedAt: publishedAt
     });
 
     try {
@@ -85,7 +85,32 @@ const PostController = {
   },
 
   async update(req, res) {
+    let slug = req.body.slug;
+    let publishedAt = null;
 
+    if (!slug) {
+      slug = req.body.title.replaceAll(' ', '-').toLowerCase();
+    }
+
+    if (req.body.publish) {
+      publishedAt = new Date();
+    }
+
+    try {
+      await Post.findByIdAndUpdate(req.params.id, {
+        title: req.body.title,
+        brief: req.body.brief,
+        content: req.body.content,
+        category: req.body.category,
+        slug,
+        publishedAt
+      });
+
+      res.redirect('/dashboard/posts');
+    } catch (err) {
+      console.error(err);
+      res.redirect(`/dashboard/posts/${req.params.id}/edit`);
+    }
   },
 
   async destroy(req, res) {
