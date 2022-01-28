@@ -3,7 +3,14 @@ const Post = require('../../database/models/PostSchema');
 
 const PostController = {
   async index(req, res) {
-    res.send('hello');
+    const posts = await Post.find({})
+      .sort({ created_at: 'desc' })
+      .exec();
+
+    res.render('dashboard/post/index', {
+      csrfToken: req.csrfToken(),
+      posts
+    });
   },
 
   async create(req, res) {
@@ -38,7 +45,7 @@ const PostController = {
       content: req.body.content,
       category: req.body.category,
       user: req.user._id,
-      published_at: published_at
+      publishedAt: published_at
     });
 
     try {

@@ -13,7 +13,7 @@ const createAdminUser = async () => {
       email: process.env.ADMIN_EMAIL,
       password: password,
       brief: '',
-      profile_image: '',
+      profileImage: '',
       role: process.env.ADMIN_ROLE,
       active: true
     });
