@@ -114,7 +114,13 @@ const PostController = {
   },
 
   async destroy(req, res) {
-    
+    try {
+      const post = await Post.findByIdAndDelete(req.params.id).exec();
+    } catch (err) {
+      console.error(err);
+    }
+
+    return res.redirect('/dashboard/posts');
   }
 };
 
