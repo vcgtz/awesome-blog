@@ -4,7 +4,7 @@ const csrf = require('csurf');
 const csrfProtection = csrf({ cookie: true });
 const { body } = require('express-validator');
 
-const { categoryValidations } = require('../../middlewares/auth');
+const { categoryValidations, postValidations } = require('../../middlewares/auth');
 const DashboardController = require('../../controllers/dashboard/dashboard');
 const CategoryController = require('../../controllers/dashboard/category');
 const PostController = require('../../controllers/dashboard/post');
@@ -28,7 +28,14 @@ router.delete('/categories/:id', [csrfProtection], CategoryController.destroy);
 // Posts
 router.get('/posts', [csrfProtection], PostController.index);
 router.get('/posts/create', [csrfProtection], PostController.create);
-router.post('/posts', [csrfProtection], PostController.store);
+router.post('/posts', [
+    csrfProtection,
+    body('title', 'Title is required').not().isEmpty(),
+    body('brief', 'Brief is required').not().isEmpty(),
+    body('content', 'Content is required').not().isEmpty(),
+    body('category', 'Categoty is required').not().isEmpty(),
+    postValidations,
+], PostController.store);
 router.get('/posts/:id/edit', [csrfProtection], PostController.edit);
 router.put('/posts/:id', [csrfProtection], PostController.update);
 router.delete('/posts/:id', [csrfProtection], PostController.destroy);

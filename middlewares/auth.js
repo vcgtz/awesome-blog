@@ -26,7 +26,25 @@ const categoryValidations = (req, res, next) => {
   next();
 };
 
+const postValidations = (req, res, next) => {
+  const validationErrors = validationResult(req);
+
+  if (!validationErrors.isEmpty()) {
+    const errors = {};
+    validationErrors.array().forEach(err => {
+      errors[err.param] = err.msg;
+    });
+
+    req.flash('errors', errors);
+
+    return res.redirect('/dashboard/posts/create');
+  }
+
+  next();
+};
+
 module.exports = {
   isloggedIn,
   categoryValidations,
+  postValidations
 };

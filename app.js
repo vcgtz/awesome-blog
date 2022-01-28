@@ -41,7 +41,7 @@ const start = async () => {
   hbs.registerPartials(__dirname + '/views/partials');
   hbs.registerHelper('isEven', val => val % 2 === 0);
   hbs.registerHelper('isTabActive', (section, currentUrl) => currentUrl === section);
-  hbs.registerHelper('selectOption', (value, optionValue) => value.toString() === optionValue.toString());
+  hbs.registerHelper('selectOption', (value, optionValue) => value?.toString() === optionValue.toString());
   hbs.registerHelper('readableDate', date => {
     if (!date) {
       return '';
