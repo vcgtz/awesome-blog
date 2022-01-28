@@ -22,6 +22,8 @@ const categoryValidations = (req, res, next) => {
 
     return res.redirect('/dashboard/categories/create');
   }
+
+  next();
 };
 
 module.exports = {
