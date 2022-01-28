@@ -11,11 +11,11 @@ const PostSchema = Schema({
   },
   slug: {
     type: String,
-    required: [true, 'Category slug is required'],
+    required: [true, 'Slug is required'],
   },
   content: {
     type: String,
-    required: [true, 'Category slug is required'],
+    required: [true, 'Content is required'],
   },
   category: {
     type: Schema.Types.ObjectId,
