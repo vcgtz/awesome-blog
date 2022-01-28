@@ -4,7 +4,7 @@ const { validationResult } = require('express-validator');
 const CategoryController = {
   async index (req, res) {
     const categories = await Category.find({})
-      .sort({created_at: 'desc'})
+      .sort({ createdAt: 'desc' })
       .exec();
 
     res.render('dashboard/category/index.hbs', {

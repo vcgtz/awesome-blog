@@ -1,0 +1,44 @@
+{{#> dashboard/header title="Posts" }}
+<link rel="stylesheet" type="text/css" href="/styles/prism.css">
+<script src="https://cdn.tiny.cloud/1/slp3467c2gikluchlfj97atc38q9a2tf4fb36n1snin5cfxj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+{{/dashboard/header}}
+
+<div class="border-2 border-dashed border-gray-200 rounded-lg h-full p-4">
+  {{> dashboard/post/form
+    title="Post information"
+    description="Here you can create your own posts."
+    categories=categories
+    post=post
+    csrfToken=csrfToken
+  }}
+</div>
+
+{{#> dashboard/footer}}
+<script src="/js/prism.js"></script>
+<script>
+  tinymce.init({
+    selector: '#content',
+    height: 500,
+    plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help codesample'
+    ],
+    toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+      'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+      'forecolor backcolor emoticons | help',
+    menu: {
+      favs: {title: 'My Favorites', items: 'codesample | code visualaid | searchreplace | emoticons'}
+    },
+    menubar: 'favs file edit view insert format tools table help',
+    codesample_global_prismjs: true,
+    codesample_languages: [
+      { text: 'HTML/XML', value: 'markup' },
+      { text: 'JavaScript', value: 'javascript' },
+      { text: 'Go', value: 'go' },
+      { text: 'Python', value: 'python' },
+    ],
+  });
+</script>
+{{/dashboard/footer}}
+
