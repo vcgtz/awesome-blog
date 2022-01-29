@@ -22,7 +22,12 @@ router.post('/categories', [
     categoryValidations
 ], CategoryController.store);
 router.get('/categories/:id/edit', [csrfProtection], CategoryController.edit);
-router.put('/categories/:id', [csrfProtection], CategoryController.update);
+router.put('/categories/:id', [
+    csrfProtection,
+    body('name', 'Name is required').not().isEmpty(),
+    body('description', 'Description is required').not().isEmpty(),
+    categoryValidations
+], CategoryController.update);
 router.delete('/categories/:id', [csrfProtection], CategoryController.destroy);
 
 // Posts
@@ -37,7 +42,14 @@ router.post('/posts', [
     postValidations,
 ], PostController.store);
 router.get('/posts/:id/edit', [csrfProtection], PostController.edit);
-router.put('/posts/:id', [csrfProtection], PostController.update);
+router.put('/posts/:id', [
+    csrfProtection,
+    body('title', 'Title is required').not().isEmpty(),
+    body('brief', 'Brief is required').not().isEmpty(),
+    body('content', 'Content is required').not().isEmpty(),
+    body('category', 'Categoty is required').not().isEmpty(),
+    postValidations,
+], PostController.update);
 router.delete('/posts/:id', [csrfProtection], PostController.destroy);
 
 module.exports = router;
