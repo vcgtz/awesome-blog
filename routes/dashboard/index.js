@@ -8,9 +8,13 @@ const { categoryValidations, postValidations } = require('../../middlewares/auth
 const DashboardController = require('../../controllers/dashboard/dashboard');
 const CategoryController = require('../../controllers/dashboard/category');
 const PostController = require('../../controllers/dashboard/post');
+const ProfileController = require('../../controllers/dashboard/profile');
 
 // Dashboard
 router.get('/', DashboardController.home);
+
+// Profile
+router.get('/my-profile', ProfileController.index);
 
 // Categories
 router.get('/categories', [csrfProtection], CategoryController.index);
