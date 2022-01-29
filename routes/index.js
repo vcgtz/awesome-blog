@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const { isloggedIn } = require('../middlewares/auth');
 
@@ -14,6 +15,6 @@ router.get('/', (req, res) => {
 router.use('/', authRoutes);
 
 // Dashboard routes
-router.use('/dashboard', dashboardRoutes)
+router.use('/dashboard', [isloggedIn], dashboardRoutes);
 
 module.exports = router;

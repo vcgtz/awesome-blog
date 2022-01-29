@@ -16,11 +16,11 @@ const CategorySchema = Schema({
   posts: [
     {
       type: Schema.Types.ObjectId,
-      ref:'Post'
-    }
+      ref: 'Post',
+    },
   ],
 }, {
-  timestamps: true
+  timestamps: true,
 });
 
 module.exports = model('Category', CategorySchema);

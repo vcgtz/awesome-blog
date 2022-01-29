@@ -19,18 +19,18 @@ const PostSchema = Schema({
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: 'Category'
+    ref: 'Category',
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
   },
   publishedAt: {
     type: Date,
-    defaul: null
+    defaul: null,
   },
 }, {
-  timestamps: true
+  timestamps: true,
 });
 
 module.exports = model('Post', PostSchema);

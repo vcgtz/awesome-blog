@@ -9,7 +9,7 @@ const PostController = {
 
     res.render('dashboard/post/index', {
       csrfToken: req.csrfToken(),
-      posts
+      posts,
     });
   },
 
@@ -22,12 +22,12 @@ const PostController = {
     res.render('dashboard/post/create.hbs', {
       csrfToken: req.csrfToken(),
       categories,
-      errors
+      errors,
     });
   },
 
   async store(req, res) {
-    let slug = req.body.slug;
+    let { slug } = req.body;
     let publishedAt = null;
 
     if (!slug) {
@@ -41,11 +41,11 @@ const PostController = {
     const post = new Post({
       title: req.body.title,
       brief: req.body.brief,
-      slug: slug,
+      slug,
       content: req.body.content,
       category: req.body.category,
       user: req.user.id,
-      publishedAt: publishedAt
+      publishedAt,
     });
 
     try {
@@ -56,10 +56,6 @@ const PostController = {
       console.error(err);
       res.redirect('/dashboard/posts/create');
     }
-  },
-
-  async show(req, res) {
-
   },
 
   async edit(req, res) {
@@ -73,7 +69,7 @@ const PostController = {
         return res.status(404).send('Not found');
       }
 
-      res.render('dashboard/post/edit.hbs', {
+      return res.render('dashboard/post/edit.hbs', {
         csrfToken: req.csrfToken(),
         post,
         categories,
@@ -85,7 +81,7 @@ const PostController = {
   },
 
   async update(req, res) {
-    let slug = req.body.slug;
+    let { slug } = req.body;
     let publishedAt = null;
 
     if (!slug) {
@@ -103,7 +99,7 @@ const PostController = {
         content: req.body.content,
         category: req.body.category,
         slug,
-        publishedAt
+        publishedAt,
       });
 
       res.redirect('/dashboard/posts');
@@ -115,13 +111,13 @@ const PostController = {
 
   async destroy(req, res) {
     try {
-      const post = await Post.findByIdAndDelete(req.params.id).exec();
+      await Post.findByIdAndDelete(req.params.id).exec();
     } catch (err) {
       console.error(err);
     }
 
     return res.redirect('/dashboard/posts');
-  }
+  },
 };
 
 module.exports = PostController;

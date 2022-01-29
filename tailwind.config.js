@@ -1,6 +1,8 @@
+const tailwindcssForms = require('@tailwindcss/forms');
+
 module.exports = {
   content: [
-    "./views/**/*.hbs"
+    './views/**/*.hbs',
   ],
   media: false, // or 'media' or 'class'
   theme: {
@@ -10,6 +12,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/forms')
+    tailwindcssForms,
   ],
-}
+};

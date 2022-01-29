@@ -31,7 +31,7 @@ const UserSchema = Schema({
   role: {
     type: String,
     required: [true, 'Role is required'],
-    enum: ['GOD_OF_WAR', 'ADMIN', 'WRITER', 'USER', 'GUEST']
+    enum: ['GOD_OF_WAR', 'ADMIN', 'WRITER', 'USER', 'GUEST'],
   },
   active: {
     type: Boolean,
@@ -40,11 +40,11 @@ const UserSchema = Schema({
   posts: [
     {
       type: Schema.Types.ObjectId,
-      ref:'Post'
-    }
+      ref: 'Post',
+    },
   ],
 }, {
-  timestamps: true
+  timestamps: true,
 });
 
 module.exports = model('User', UserSchema);

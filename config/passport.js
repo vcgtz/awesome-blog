@@ -5,7 +5,7 @@ const User = require('../database/models/UserSchema');
 
 passport.use(new LocalStrategy(
   (username, password, done) => {
-    User.findOne({ username: username }, (err, user) => {
+    User.findOne({ username }, (err, user) => {
       if (err) {
         return done(err);
       }
@@ -22,18 +22,17 @@ passport.use(new LocalStrategy(
 
       return done(null, user);
     });
-  }
+  },
 ));
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
     done(err, user);
   });
 });
 
 module.exports = passport;
-

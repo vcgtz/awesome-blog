@@ -1,5 +1,5 @@
-const User = require('./models/UserSchema');
 const bcryptjs = require('bcryptjs');
+const User = require('./models/UserSchema');
 
 const createAdminUser = async () => {
   const salt = bcryptjs.genSaltSync();
@@ -11,18 +11,18 @@ const createAdminUser = async () => {
       lastname: process.env.ADMIN_LASTNAME,
       username: process.env.ADMIN_USERNAME,
       email: process.env.ADMIN_EMAIL,
-      password: password,
+      password,
       brief: '',
       profileImage: '',
       role: process.env.ADMIN_ROLE,
-      active: true
+      active: true,
     });
 
     await user.save();
   } catch (err) {
     console.error('An error occurred while creating the admin user');
   }
-}
+};
 
 module.exports = {
   createAdminUser,

@@ -1,7 +1,6 @@
 const { validationResult } = require('express-validator');
 
 const isloggedIn = (req, res, next) => {
-  
   if (req.isAuthenticated()) {
     return next();
   }
@@ -14,7 +13,7 @@ const categoryValidations = (req, res, next) => {
 
   if (!validationErrors.isEmpty()) {
     const errors = {};
-    validationErrors.array().forEach(err => {
+    validationErrors.array().forEach((err) => {
       errors[err.param] = err.msg;
     });
 
@@ -23,7 +22,7 @@ const categoryValidations = (req, res, next) => {
     return res.redirect('/dashboard/categories/create');
   }
 
-  next();
+  return next();
 };
 
 const postValidations = (req, res, next) => {
@@ -31,7 +30,7 @@ const postValidations = (req, res, next) => {
 
   if (!validationErrors.isEmpty()) {
     const errors = {};
-    validationErrors.array().forEach(err => {
+    validationErrors.array().forEach((err) => {
       errors[err.param] = err.msg;
     });
 
@@ -40,11 +39,11 @@ const postValidations = (req, res, next) => {
     return res.redirect('/dashboard/posts/create');
   }
 
-  next();
+  return next();
 };
 
 module.exports = {
   isloggedIn,
   categoryValidations,
-  postValidations
+  postValidations,
 };

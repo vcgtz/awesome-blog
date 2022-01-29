@@ -2,33 +2,34 @@ require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
+
 const app = express();
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
+const hbs = require('hbs');
 const passport = require('./config/passport');
 const registerHbsHelpers = require('./helpers/hbs');
 
-const hbs = require('hbs');
 const router = require('./routes');
 
 const { databaseConnect } = require('./config/database');
 
 const start = async () => {
   // Express config
-  app.set('views', __dirname + '/views');
+  app.set('views', `${__dirname}/views`);
   app.set('view engine', 'hbs');
   app.use(express.static(path.join(__dirname, 'public')));
 
   app.use(cookieParser());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(methodOverride('_method'));
-  app.use(session({ 
+  app.use(session({
     secret: process.env.SESSION_KEY,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
   }));
 
   app.use(passport.initialize());
@@ -39,7 +40,7 @@ const start = async () => {
     next();
   });
 
-  hbs.registerPartials(__dirname + '/views/partials');
+  hbs.registerPartials(`${__dirname}/views/partials`);
   registerHbsHelpers(hbs);
 
   // Routes
