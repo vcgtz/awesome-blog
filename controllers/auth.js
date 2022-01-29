@@ -1,6 +1,8 @@
 const AuthController = {
   showLogin (req, res) {
-    res.render('auth/login.hbs');
+    res.render('auth/login.hbs', {
+      error: req.flash('error').shift(),
+    });
   },
 };
 

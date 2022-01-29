@@ -9,7 +9,11 @@ router.get('/login', AuthController.showLogin);
 
 // Login
 router.post('/login',
-  passport.authenticate('local', { failureRedirect: '/login', failureMessage: true }),
+  passport.authenticate('local', {
+    failureRedirect: '/login',
+    failureMessage: true,
+    failureFlash : true,
+  }),
   (req, res) => res.redirect('/dashboard')
 );
 

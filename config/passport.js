@@ -11,13 +11,13 @@ passport.use(new LocalStrategy(
       }
 
       if (!user) {
-        return done(null, false, { message: 'Username or password incorrect' });
+        return done(null, false, { message: 'Username or password are incorrect.' });
       }
 
       const isValidPassword = bcryptjs.compareSync(password, user.password);
 
       if (!isValidPassword) {
-        return done(null, false, { message: 'Username or password incorrect' });
+        return done(null, false, { message: 'Username or password are incorrect.' });
       }
 
       return done(null, user);
