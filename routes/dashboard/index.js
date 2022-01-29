@@ -9,12 +9,16 @@ const DashboardController = require('../../controllers/dashboard/dashboard');
 const CategoryController = require('../../controllers/dashboard/category');
 const PostController = require('../../controllers/dashboard/post');
 const ProfileController = require('../../controllers/dashboard/profile');
+const SettingsController = require('../../controllers/dashboard/settings');
 
 // Dashboard
 router.get('/', DashboardController.home);
 
 // Profile
 router.get('/my-profile', ProfileController.index);
+
+// Settings
+router.get('/settings', SettingsController.index);
 
 // Categories
 router.get('/categories', [csrfProtection], CategoryController.index);
