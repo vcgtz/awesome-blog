@@ -1,4 +1,5 @@
 const registerHbsHelpers = (hbs) => {
+  hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
   hbs.registerHelper('isEven', (val) => val % 2 === 0);
   hbs.registerHelper('isTabActive', (section, currentUrl) => currentUrl === section);
   hbs.registerHelper('selectOption', (value, optionValue) => value?.toString() === optionValue.toString());

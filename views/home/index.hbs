@@ -1,1 +1,41 @@
-hola
+{{#> home/header title="Vicente Gutiérrez" }}
+{{/home/header}}
+
+<div class="max-w-7xl mx-auto px-4 pt-2 sm:px-6 sm:pt-2 lg:px-8 lg:pt-4">
+  <div class="max-w-3xl mx-auto flex">
+    <div class="flex-auto md:w-8/12 sm:w-auto">
+      <h1 class="text-xl">Vicente's Web Site</h1>
+      <p class="my-4">Hola! me llamo Vicente Gutiérrez y te doy la bienvenida a mi sitio web.</p>
+      <p class="my-4">Soy desarrollador de software y actualmente trabajo principalmente con NodeJS (JavaScript) y Laravel (PHP).</p>
+      <p class="my-4">Del lado derecho encontrarás la forma de contactarme y algunos links a parte de mi trabajo.</p>
+    </div>
+
+    <div class="flex-auto px-8 md:w-4/12 sm:w-auto">
+      <ul>
+        <li>
+          <a class="line-through cursor-not-allowed	text-gray-400" href="#">Blog</a>
+        </li>
+        <li>
+          <a class="line-through cursor-not-allowed	text-gray-400" href="#">Curriculum</a>
+        </li>
+        <li>
+          <a class="line-through cursor-not-allowed	text-gray-400" href="#">Proyectos</a>
+        </li>
+        <li>
+          <a class="hover:text-blue-500" target="_blank" href="https://github.com/vcgtz">Github</a>
+        </li>
+        <li>
+          <a class="hover:text-blue-500" target="_blank" href="https://www.linkedin.com/in/vicentegtz/">LinkedIn</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="fixed bottom-0 w-full py-4">
+  <p class="text-center">@vcgtz {{#getCurrentYear}}{{/getCurrentYear}}</p>
+  <p class="text-center italic text-sm text-gray-400">Después de tantos diseños, al final decidí dejar este sitio lo más sencillo posible.</p>
+</div>
+
+{{#> home/footer}}
+{{/home/footer}}
