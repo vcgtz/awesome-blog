@@ -3,13 +3,12 @@ const express = require('express');
 const router = express.Router();
 const { isloggedIn } = require('../middlewares/auth');
 
+const homeRoutes = require('./home');
 const dashboardRoutes = require('./dashboard');
 const authRoutes = require('./auth');
 
 // Home
-router.get('/', (req, res) => {
-  res.render('index.hbs');
-});
+router.get('/', homeRoutes);
 
 // Auth
 router.use('/', authRoutes);
