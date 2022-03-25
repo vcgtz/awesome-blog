@@ -1,5 +1,5 @@
 const DashboardController = {
-  home(req, res) {
+  index(req, res) {
     res.render('dashboard/index.hbs');
   },
 };

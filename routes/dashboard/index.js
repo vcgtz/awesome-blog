@@ -14,7 +14,7 @@ const ProfileController = require('../../controllers/dashboard/profile');
 const SettingsController = require('../../controllers/dashboard/settings');
 
 // Dashboard
-router.get('/', DashboardController.home);
+router.get('/', DashboardController.index);
 
 // Profile
 router.get('/my-profile', ProfileController.index);
