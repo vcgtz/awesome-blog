@@ -14,7 +14,6 @@ Desktop.ini
 
 # npm
 node_modules
-package-lock.json
 *.log
 *.gz
 
@@ -25,7 +24,6 @@ coverage
 benchmarks/graphs
 
 .env
-yarn.lock
 
 # Style files
 public/styles/style.css
