@@ -4,7 +4,31 @@
 <div class="max-w-7xl mx-auto px-4 pt-2 sm:px-6 sm:pt-2 lg:px-8 lg:pt-4">
   <div class="max-w-3xl mx-auto flex">
     <div class="flex-auto md:w-8/12 sm:w-auto">
-      <h1 class="text-xl border-b-2 w-full">Blog</h1>
+      <div class="py-8 w-full text-center">
+        <h1 class="text-3xl mb-2">This is my blog!</h1>
+        <p class="font-extralight">Bienvenido a mi blog personal! Aquí me gusta escribir sobre el desarrollo de software, compatir mi experiencias y opiniones personales como desarrollador.</p>
+      </div>
+
+      <div>
+        {{#each posts}}
+          <div class="flex mb-10">
+            <div class="hidden sm:w-1/4 sm:block text-gray-500 font-extralight">
+              {{ humanDate this.createdAt }}
+            </div>
+            <div class="w-full sm:w3/4">
+              <h2 class="text-xl font-medium mb-2"><a href="#">{{ this.title }}</a></h2>
+              <span class="block sm:hidden font-extralight">{{ humanDate this.createdAt }}</span>
+              <p class="font-light">{{ this.brief }}</p>
+
+              <div class="block text-right mt-2">
+                <a href="#" class="items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700">
+                  Continuar leyendo...
+                </a>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
     </div>
   </div>
 </div>

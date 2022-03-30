@@ -1,6 +1,15 @@
+const Post = require('../../database/models/PostSchema');
+
 const BlogController = {
-  index(req, res) {
-    res.render('blog/index.hbs');
+  async index(req, res) {
+    const posts = await Post.find({ publishedAt: { $ne: null } })
+      .sort({ createdAt: 'desc' })
+      .limit(10)
+      .exec();
+
+    res.render('blog/index.hbs', {
+      posts,
+    });
   },
 };
 

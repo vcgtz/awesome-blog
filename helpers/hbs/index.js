@@ -18,6 +18,19 @@ const registerHbsHelpers = (hbs) => {
 
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
   });
+  hbs.registerHelper('humanDate', (date) => {
+    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+    if (!date) {
+      return '';
+    }
+
+    const year = date.getFullYear();
+    const month = months[date.getMonth()];
+    const day = date.getDate();
+
+    return `${month} ${day}, ${year}`;
+  });
 };
 
 module.exports = registerHbsHelpers;
