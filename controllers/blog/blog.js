@@ -15,6 +15,19 @@ const BlogController = {
       categories,
     });
   },
+
+  async post(req, res) {
+    const post = await Post.findOne({ slug: req.params.slug }).exec();
+
+    if (!post) {
+      res.sendStatus(404);
+    }
+
+    res.render('blog/post.hbs', {
+      customCss: true,
+      post,
+    });
+  },
 };
 
 module.exports = BlogController;

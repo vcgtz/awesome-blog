@@ -11,6 +11,9 @@ module.exports = {
   variants: {
     extend: {},
   },
+  corePlugins: {
+    preflight: true,
+  },
   plugins: [
     tailwindcssForms,
   ],

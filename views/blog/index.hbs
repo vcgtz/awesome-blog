@@ -25,12 +25,12 @@
               {{ humanDate this.createdAt }}
             </div>
             <div class="w-full sm:w3/4">
-              <h2 class="text-xl font-medium mb-2"><a href="#">{{ this.title }}</a></h2>
+              <h2 class="text-xl font-medium mb-2"><a href="/blog/{{ this.slug }}">{{ this.title }}</a></h2>
               <span class="block sm:hidden font-extralight">{{ humanDate this.createdAt }}</span>
               <p class="font-light">{{ this.brief }}</p>
 
               <div class="block text-right mt-2">
-                <a href="#" class="items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700">
+                <a href="/blog/{{ this.slug }}" class="items-center px-3 py-2 border border-transparent shadow-sm text-sm leading-4 font-medium rounded-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-700">
                   Continuar leyendo...
                 </a>
               </div>
