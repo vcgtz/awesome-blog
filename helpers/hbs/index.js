@@ -2,6 +2,7 @@ const registerHbsHelpers = (hbs) => {
   hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
   hbs.registerHelper('isEven', (val) => val % 2 === 0);
   hbs.registerHelper('isTabActive', (section, currentUrl) => currentUrl === section);
+  hbs.registerHelper('isNotLastIndex', (index, length) => index !== length - 1);
   hbs.registerHelper('selectOption', (value, optionValue) => value?.toString() === optionValue.toString());
   hbs.registerHelper('readableDate', (date) => {
     if (!date) {

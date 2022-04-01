@@ -9,10 +9,12 @@
         <p class="font-extralight">Bienvenido a mi blog personal! Aquí me gusta escribir sobre el desarrollo de software, compatir mi experiencias y opiniones personales como desarrollador.</p>
       
         <div class="mt-4">
-          <a class="text-sm font-semibold hover:text-blue-600" href="#">Ingeniería de Software</a> •
-          <a class="text-sm font-semibold hover:text-blue-600" href="#">NodeJS</a> •
-          <a class="text-sm font-semibold hover:text-blue-600" href="#">Algoritmos</a> •
-          <a class="text-sm font-semibold hover:text-blue-600" href="#">Off-topic</a>
+          {{#each categories}}
+            <a class="text-sm font-semibold hover:text-blue-600" href="#">{{ this.name }}</a>
+            {{#if (isNotLastIndex @index ../categories.length) }}
+              •
+            {{/if}}
+          {{/each}}
         </div>
       </div>
 
