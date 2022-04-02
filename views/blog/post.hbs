@@ -2,19 +2,33 @@
 <link rel="stylesheet" type="text/css" href="/css/prism.css">
 {{/blog/header}}
 
-<div class="max-w-7xl mx-auto px-4 pt-2 sm:px-6 sm:pt-2 lg:px-8 lg:pt-4">
-  <div class="max-w-3xl mx-auto flex">
-    <div class="flex-auto md:w-8/12 sm:w-auto">
-      <div class="py-8 w-full">
-        <h1 class="text-3xl mb-2">{{ post.title }}</h1>
-      </div>
+<div class="container py-4">
+  <div class="row mb-4">
+    <div class="col-2"></div>
 
-      <div class="no-tailwindcss-base">
+    <div class="col-8">
+      <h1>{{ post.title }}</h1>
+      <div class="col-12 fw-light">
+        {{ humanDate post.createdAt }}
+      </div>
+    </div>
+
+    <div class="col-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-2"></div>
+
+    <div class="col-8">
+      <div class="fw-light">
         {{{ post.content }}}
       </div>
     </div>
+
+    <div class="col-2"></div>
   </div>
 </div>
 
 {{#> blog/footer}}
+<script src="/js/prism.js"></script>
 {{/blog/footer}}
