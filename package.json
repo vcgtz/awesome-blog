@@ -4,12 +4,12 @@
   "description": "My personal blog",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon NODE_ENV=development --exec 'npm run compilecss && node app.js'",
+    "start": "nodemon NODE_ENV=development node app.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
     "test": "jest",
-    "compilecss": "postcss public/styles/tailwind.css -o public/styles/style.css",
-    "compilecss:prod": "NODE_ENV=production postcss public/styles/tailwind.css -o public/styles/style.min.css"
+    "compilecss": "postcss public/styles/tailwind.css -o public/styles/dashboard_styles.css",
+    "compilecss:prod": "NODE_ENV=production postcss public/styles/tailwind.css -o public/styles/dashboard_styles.min.css"
   },
   "repository": {
     "type": "git",
