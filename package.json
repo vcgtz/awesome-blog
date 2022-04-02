@@ -8,8 +8,8 @@
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
     "test": "jest",
-    "compilecss": "postcss public/styles/tailwind.css -o public/styles/dashboard_styles.css",
-    "compilecss:prod": "NODE_ENV=production postcss public/styles/tailwind.css -o public/styles/dashboard_styles.min.css"
+    "compilecss": "postcss public/css/tailwind.css -o public/css/dashboard_styles.css",
+    "compilecss:prod": "NODE_ENV=production postcss public/css/tailwind.css -o public/css/dashboard_styles.min.css"
   },
   "repository": {
     "type": "git",
