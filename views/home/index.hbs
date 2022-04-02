@@ -1,40 +1,49 @@
 {{#> home/header title="Vicente Gutiérrez" }}
 {{/home/header}}
 
-<div class="max-w-7xl mx-auto px-4 pt-2 sm:px-6 sm:pt-2 lg:px-8 lg:pt-4">
-  <div class="max-w-3xl mx-auto flex">
-    <div class="flex-auto md:w-8/12 sm:w-auto">
-      <h1 class="text-xl">Vicente's Web Site</h1>
-      <p class="font-light my-4">Hola! me llamo Vicente Gutiérrez y te doy la bienvenida a mi sitio web.</p>
-      <p class="font-light my-4">Soy desarrollador de software y actualmente trabajo principalmente con NodeJS (JavaScript) y Laravel (PHP).</p>
-      <p class="font-light my-4">Del lado derecho encontrarás la forma de contactarme y algunos links a parte de mi trabajo.</p>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-2"></div>
+
+    <div class="col-8">
+     <h1 class="text-xl">Vicente's Web Site</h1>
     </div>
 
-    <div class="flex-auto px-8 md:w-4/12 sm:w-auto">
-      <ul>
+    <div class="col-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-6">
+      <p>Hola! me llamo Vicente Gutiérrez y te doy la bienvenida a mi sitio web.</p>
+      <p>Soy desarrollador de software y actualmente trabajo principalmente con NodeJS (JavaScript) y Laravel (PHP).</p>
+      <p>Del lado derecho encontrarás la forma de contactarme y algunos links a parte de mi trabajo.</p>
+    </div>
+    <div class="col-2">
+      <ul class="list-unstyled">
         <li>
-          <a class="font-semibold hover:text-blue-600" href="/blog">Blog</a>
+          <a class="text-decoration-none text-warning" href="/blog">Blog</a>
         </li>
         <li>
-          <a class="font-semibold line-through cursor-not-allowed	text-gray-400" href="#">Curriculum</a>
+          <a class="pe-none text-muted text-decoration-line-through text-decoration-none" href="#">Curriculum</a>
         </li>
         <li>
-          <a class="font-semibold line-through cursor-not-allowed	text-gray-400" href="#">Proyectos</a>
+          <a class="pe-none text-muted text-decoration-line-through text-decoration-none" href="#">Proyectos</a>
         </li>
         <li>
-          <a class="font-semibold hover:text-blue-600" target="_blank" href="https://github.com/vcgtz">Github</a>
+          <a class="text-decoration-none text-warning" target="_blank" href="https://github.com/vcgtz">Github</a>
         </li>
         <li>
-          <a class="font-semibold hover:text-blue-600" target="_blank" href="https://www.linkedin.com/in/vicentegtz/">LinkedIn</a>
+          <a class="text-decoration-none text-warning" target="_blank" href="https://www.linkedin.com/in/vicentegtz/">LinkedIn</a>
         </li>
       </ul>
     </div>
+    <div class="col-2"></div>
   </div>
 </div>
 
-<div class="fixed bottom-0 w-full py-4">
-  <p class="text-center">@vcgtz {{#getCurrentYear}}{{/getCurrentYear}}</p>
-  <p class="text-center font-light italic text-sm text-gray-400">Sitio web diseñado bajo los más altos estándares de diseño, de los cuales hasta Steve Jobs estaría orgulloso.</p>
+<div class="fixed-bottom">
+  <p class="text-center"><small>@vcgtz {{#getCurrentYear}}{{/getCurrentYear}}</small></p>
 </div>
 
 {{#> home/footer}}
