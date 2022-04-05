@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon NODE_ENV=development node app.js",
+    "migrate": "npx sequelize db:migrate",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
     "test": "jest",

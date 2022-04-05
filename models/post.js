@@ -1,7 +1,7 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Post extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,49 +13,60 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  User.init({
+  Post.init({
     id: {
       primaryKey: true,
       autoIncrement: true,
       allowNull: false,
       type: DataTypes.BIGINT,
     },
-    name: {
-      allowNull: false,
-      type: DataTypes.STRING(128),
-    },
-    lastName: {
-      allowNull: false,
-      type: DataTypes.STRING(128),
-    },
-    username: {
-      allowNull: false,
-      type: DataTypes.STRING(64),
-    },
-    password: {
+    title: {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    email: {
-      allowNull: true,
+    brief: {
+      allowNull: false,
+      type: DataTypes.TEXT('tiny'),
+    },
+    slug: {
+      allowNull: false,
       type: DataTypes.STRING,
     },
-    profileImage: {
-      allowNull: true,
+    content: {
+      allowNull: false,
       type: DataTypes.TEXT,
+    },
+    published: {
+      allowNull: false,
+      defaultValue: false,
+      type: DataTypes.BOOLEAN,
+    },
+    categoryId: {
+      allowNull: false,
+      type: DataTypes.BIGINT,
+    },
+    userId: {
+      allowNull: false,
+      type: DataTypes.BIGINT,
     },
   }, {
     sequelize,
     timestamps: true,
-    tableName: 'users',
-    modelName: 'User',
+    tableName: 'posts',
+    modelName: 'Post',
   });
 
-  User.associate = (models) => {
-    User.hasMany(models.Post, {
+  Post.associate = (models) => {
+    Post.belongsTo(models.Category, {
+      as: 'category',
+      foreignKey: 'categoryId',
+    });
+
+    Post.belongsTo(models.User, {
+      as: 'user',
       foreignKey: 'userId',
     });
   };
 
-  return User;
+  return Post;
 };

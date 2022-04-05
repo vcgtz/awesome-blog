@@ -1,7 +1,7 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Category extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  User.init({
+  Category.init({
     id: {
       primaryKey: true,
       autoIncrement: true,
@@ -24,38 +24,26 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING(128),
     },
-    lastName: {
-      allowNull: false,
-      type: DataTypes.STRING(128),
-    },
-    username: {
-      allowNull: false,
-      type: DataTypes.STRING(64),
-    },
-    password: {
-      allowNull: false,
-      type: DataTypes.STRING,
-    },
-    email: {
-      allowNull: true,
-      type: DataTypes.STRING,
-    },
-    profileImage: {
+    description: {
       allowNull: true,
       type: DataTypes.TEXT,
+    },
+    slug: {
+      allowNull: false,
+      type: DataTypes.STRING,
     },
   }, {
     sequelize,
     timestamps: true,
-    tableName: 'users',
-    modelName: 'User',
+    tableName: 'categories',
+    modelName: 'Category',
   });
 
-  User.associate = (models) => {
-    User.hasMany(models.Post, {
-      foreignKey: 'userId',
+  Category.associate = (models) => {
+    Category.hasMany(models.Post, {
+      foreignKey: 'categoryId',
     });
   };
 
-  return User;
+  return Category;
 };
