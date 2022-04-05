@@ -2,6 +2,7 @@ const registerHbsHelpers = (hbs) => {
   hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
   hbs.registerHelper('isEven', (val) => val % 2 === 0);
   hbs.registerHelper('isTabActive', (section, currentUrl) => currentUrl === section);
+  hbs.registerHelper('isNotLastIndex', (index, length) => index !== length - 1);
   hbs.registerHelper('selectOption', (value, optionValue) => value?.toString() === optionValue.toString());
   hbs.registerHelper('readableDate', (date) => {
     if (!date) {
@@ -17,6 +18,19 @@ const registerHbsHelpers = (hbs) => {
     const seconds = (`${date.getSeconds()}`).padStart(2, '0');
 
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+  });
+  hbs.registerHelper('humanDate', (date) => {
+    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+    if (!date) {
+      return '';
+    }
+
+    const year = date.getFullYear();
+    const month = months[date.getMonth()];
+    const day = date.getDate();
+
+    return `${month} ${day}, ${year}`;
   });
 };
 

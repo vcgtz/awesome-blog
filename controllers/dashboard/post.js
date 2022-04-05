@@ -4,7 +4,7 @@ const Post = require('../../database/models/PostSchema');
 const PostController = {
   async index(req, res) {
     const posts = await Post.find({})
-      .sort({ created_at: 'desc' })
+      .sort({ createdAt: 'desc' })
       .exec();
 
     res.render('dashboard/post/index', {

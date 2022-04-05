@@ -26,5 +26,7 @@ benchmarks/graphs
 .env
 
 # Style files
-public/styles/style.css
-public/styles/style.min.css
+public/css/style.css
+public/css/style.min.css
+public/css/dashboard_styles.css
+public/css/dashboard_styles.min.css
