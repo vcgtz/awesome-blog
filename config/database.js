@@ -1,10 +1,15 @@
 const { Sequelize } = require('sequelize');
 
 const databaseConnect = async () => {
-  const sequelize = new Sequelize('vg_blog', 'root', 'password1234', {
-    host: '0.0.0.0',
-    dialect: 'mariadb',
-  });
+  const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
+    {
+      host: process.env.DB_HOST,
+      dialect: 'mariadb',
+    },
+  );
 
   try {
     await sequelize.authenticate();
