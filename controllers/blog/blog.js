@@ -7,8 +7,7 @@ const BlogController = {
       .sort({ createdAt: 'desc' })
       .limit(10)
       .exec();
-    const categories = await Category.find({})
-      .exec();
+    const categories = await Category.find({}).exec();
 
     res.render('blog/index.hbs', {
       posts,
@@ -18,6 +17,7 @@ const BlogController = {
 
   async post(req, res) {
     const post = await Post.findOne({ slug: req.params.slug }).exec();
+    const categories = await Category.find({}).exec();
 
     if (!post) {
       res.sendStatus(404);
@@ -26,6 +26,7 @@ const BlogController = {
     res.render('blog/post.hbs', {
       customCss: true,
       post,
+      categories,
     });
   },
 };
