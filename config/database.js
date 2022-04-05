@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const databaseConnect = async () => {
+const getConnection = async () => {
   const sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
@@ -11,6 +11,12 @@ const databaseConnect = async () => {
     },
   );
 
+  return sequelize;
+};
+
+const databaseConnect = async () => {
+  const sequelize = await getConnection();
+
   try {
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
@@ -20,5 +26,6 @@ const databaseConnect = async () => {
 };
 
 module.exports = {
+  getConnection,
   databaseConnect,
 };
