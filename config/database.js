@@ -1,23 +1,16 @@
-const mongoose = require('mongoose');
-const User = require('../database/models/UserSchema');
-const { createAdminUser } = require('../database/utils');
-
-mongoose.connection.on('open', () => {
-  User.find({}, async (err, users) => {
-    if (!users.length && process.env.ADMIN_USERNAME) {
-      createAdminUser();
-    }
-  });
-});
+const { Sequelize } = require('sequelize');
 
 const databaseConnect = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
+  const sequelize = new Sequelize('vg_blog', 'root', 'password1234', {
+    host: '0.0.0.0',
+    dialect: 'mariadb',
+  });
 
-    console.log('Database connected...');
-  } catch (err) {
-    console.error(err);
-    throw new Error('Error with connection of the database');
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database: ', error);
   }
 };
 
