@@ -1,27 +1,25 @@
 const passport = require('passport');
 const bcryptjs = require('bcryptjs');
 const LocalStrategy = require('passport-local');
-const User = require('../database/models/UserSchema');
+const { User } = require('../models');
 
 passport.use(new LocalStrategy(
   (username, password, done) => {
-    User.findOne({ username }, (err, user) => {
-      if (err) {
-        return done(err);
-      }
+    User.findOne({ where: { username } })
+      .then((user) => {
+        if (!user) {
+          return done(null, false, { message: 'Username or password are incorrect.' });
+        }
 
-      if (!user) {
-        return done(null, false, { message: 'Username or password are incorrect.' });
-      }
+        const isValidPassword = bcryptjs.compareSync(password, user.password);
 
-      const isValidPassword = bcryptjs.compareSync(password, user.password);
+        if (!isValidPassword) {
+          return done(null, false, { message: 'Username or password are incorrect.' });
+        }
 
-      if (!isValidPassword) {
-        return done(null, false, { message: 'Username or password are incorrect.' });
-      }
-
-      return done(null, user);
-    });
+        return done(null, user);
+      })
+      .catch((err) => done(err));
   },
 ));
 
@@ -30,9 +28,9 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
-    done(err, user);
-  });
+  User.findByPk(id)
+    .then((user) => done(null, user))
+    .catch((err) => done(err));
 });
 
 module.exports = passport;

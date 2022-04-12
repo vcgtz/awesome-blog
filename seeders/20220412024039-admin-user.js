@@ -3,6 +3,7 @@ require('dotenv').config();
 const bcryptjs = require('bcryptjs');
 
 module.exports = {
+  // eslint-disable-next-line no-unused-vars
   async up(queryInterface, Sequelize) {
     const salt = bcryptjs.genSaltSync();
     const password = bcryptjs.hashSync(process.env.ADMIN_PASSWORD, salt);
@@ -18,6 +19,7 @@ module.exports = {
     }]);
   },
 
+  // eslint-disable-next-line no-unused-vars
   async down(queryInterface, Sequelize) {
     return queryInterface.bulkDelete('users', null, {});
   },
