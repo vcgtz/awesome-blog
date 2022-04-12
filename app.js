@@ -44,8 +44,6 @@ const start = async () => {
   // Routes
   app.use('/', router);
 
-  // Database connection
-
   // Start server
   const server = app.listen(process.env.PORT || 3000, () => {
     console.log(`The application started on port ${server.address().port}`);
