@@ -3,6 +3,8 @@ const registerHbsHelpers = (hbs) => {
   hbs.registerHelper('isEven', (val) => val % 2 === 0);
   hbs.registerHelper('isTabActive', (section, currentUrl) => currentUrl === section);
   hbs.registerHelper('isNotLastIndex', (index, length) => index !== length - 1);
+  hbs.registerHelper('isCategorySelected', (currentSlug, categorySlug) => currentSlug && currentSlug === categorySlug);
+  hbs.registerHelper('isHomeSelected', (category) => !category);
   hbs.registerHelper('selectOption', (value, optionValue) => value?.toString() === optionValue.toString());
   hbs.registerHelper('readableDate', (date) => {
     if (!date) {

@@ -37,6 +37,32 @@ const BlogController = {
       categories,
     });
   },
+
+  async category(req, res) {
+    const categories = await Category.findAll();
+    const category = await Category.findOne({
+      where: {
+        slug: req.params.slug,
+      },
+    });
+    const posts = await Post.findAll({
+      where: {
+        published: true,
+        categoryId: category.id,
+      },
+      order: [
+        ['createdAt', 'DESC'],
+      ],
+      limit: 10,
+    });
+
+    res.render('blog/category.hbs', {
+      customCss: true,
+      posts,
+      category,
+      categories,
+    });
+  },
 };
 
 module.exports = BlogController;

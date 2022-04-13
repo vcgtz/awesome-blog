@@ -1,0 +1,36 @@
+{{#> blog/header title="Vicente Gutiérrez | Blog" }}
+<link rel="stylesheet" type="text/css" href="/css/prism.css">
+{{/blog/header}}
+
+<div class="container py-4">
+  <div class="row mt-4">
+    <div class="col-2"></div>
+
+    <div class="col-8">
+      {{#each posts}}
+        <div class="row mb-5">
+          <div class="col-12 fw-light">
+            {{ humanDate this.createdAt }}
+          </div>
+          <div class="col-12">
+            <h3>
+              <a class="text-warning text-decoration-none" href="/blog/{{ this.slug }}">{{ this.title }}</a>
+            </h3>
+
+            <p class="fw-light">{{ this.brief }}</p>
+
+            <a href="/blog/{{ this.slug }}" class="btn btn-secondary float-end">
+              Continuar leyendo...
+            </a>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="col-2"></div>
+  </div>
+</div>
+
+{{#> blog/footer}}
+<script src="/js/prism.js"></script>
+{{/blog/footer}}
