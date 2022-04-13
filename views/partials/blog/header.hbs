@@ -27,9 +27,9 @@
       <div class="col-2"></div>
 
       <div class="col-8 text-center">
-        <a class="text-decoration-none text-warning" href="/blog">Home</a> •
+        <a class="text-decoration-none {{#if (isHomeSelected category)}} text-body {{else}} text-warning {{/if}}" href="/blog">Home</a> •
         {{#each categories}}
-          <a class="text-decoration-none text-warning" href="#">{{ this.name }}</a>
+          <a class="text-decoration-none {{#if (isCategorySelected ../category.slug this.slug)}} text-body {{else}} text-warning {{/if}}" href="/blog/category/{{ this.slug }}">{{ this.name }}</a>
           {{#if (isNotLastIndex @index ../categories.length) }}
             •
           {{/if}}
