@@ -15,8 +15,6 @@ const registerHbsHelpers = require('./helpers/hbs');
 
 const router = require('./routes');
 
-const { databaseConnect } = require('./config/database');
-
 const start = async () => {
   // Express config
   app.set('views', `${__dirname}/views`);
@@ -45,9 +43,6 @@ const start = async () => {
 
   // Routes
   app.use('/', router);
-
-  // Database connection
-  databaseConnect();
 
   // Start server
   const server = app.listen(process.env.PORT || 3000, () => {

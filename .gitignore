@@ -24,6 +24,7 @@ coverage
 benchmarks/graphs
 
 .env
+config/config.json
 
 # Style files
 public/css/style.css

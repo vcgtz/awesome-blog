@@ -1,13 +1,17 @@
-const Post = require('../../database/models/PostSchema');
-const Category = require('../../database/models/CategorySchema');
+const { Category, Post } = require('../../models');
 
 const BlogController = {
   async index(req, res) {
-    const posts = await Post.find({ publishedAt: { $ne: null } })
-      .sort({ createdAt: 'desc' })
-      .limit(10)
-      .exec();
-    const categories = await Category.find({}).exec();
+    const posts = await Post.findAll({
+      where: {
+        published: true,
+      },
+      order: [
+        ['createdAt', 'DESC'],
+      ],
+      limit: 10,
+    });
+    const categories = await Category.findAll();
 
     res.render('blog/index.hbs', {
       posts,
@@ -16,8 +20,12 @@ const BlogController = {
   },
 
   async post(req, res) {
-    const post = await Post.findOne({ slug: req.params.slug }).exec();
-    const categories = await Category.find({}).exec();
+    const post = await Post.findOne({
+      where: {
+        slug: req.params.slug,
+      },
+    });
+    const categories = await Category.findAll();
 
     if (!post) {
       res.sendStatus(404);

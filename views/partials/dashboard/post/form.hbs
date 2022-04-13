@@ -42,7 +42,7 @@
             <select required id="category" name="category" autocomplete="category" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm">
               <option value="">Select one category</option>
               {{#each categories}}
-              <option {{#if (selectOption ../post.category this.id) }} selected {{/if}} value="{{ this.id }}">{{ this.name }}</option>
+              <option {{#if (selectOption ../post.categoryId this.id) }} selected {{/if}} value="{{ this.id }}">{{ this.name }}</option>
               {{/each}}
             </select>
           </div>
@@ -89,7 +89,7 @@
           <div class="mt-4 space-y-4">
             <div class="relative flex items-start">
               <div class="flex items-center h-5">
-                <input {{#if post.publishedAt}} checked {{/if}} id="publish" name="publish" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                <input {{#if post.published}} checked {{/if}} id="publish" name="publish" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
               </div>
               <div class="ml-3 text-sm">
                 <label for="publish" class="font-medium text-gray-700">Immediately</label>
