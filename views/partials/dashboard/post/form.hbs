@@ -42,7 +42,7 @@
             <select required id="category" name="category" autocomplete="category" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-sm">
               <option value="">Select one category</option>
               {{#each categories}}
-              <option {{#if (selectOption ../post.category this.id) }} selected {{/if}} value="{{ this.id }}">{{ this.name }}</option>
+              <option {{#if (selectOption ../post.categoryId this.id) }} selected {{/if}} value="{{ this.id }}">{{ this.name }}</option>
               {{/each}}
             </select>
           </div>

@@ -1,10 +1,12 @@
-const Category = require('../../database/models/CategorySchema');
+const { Category } = require('../../models');
 
 const CategoryController = {
   async index(req, res) {
-    const categories = await Category.find({})
-      .sort({ createdAt: 'desc' })
-      .exec();
+    const categories = await Category.findAll({
+      order: [
+        ['createdAt', 'DESC'],
+      ],
+    });
 
     res.render('dashboard/category/index.hbs', {
       csrfToken: req.csrfToken(),
@@ -28,14 +30,12 @@ const CategoryController = {
       slug = req.body.name.replaceAll(' ', '-').toLowerCase();
     }
 
-    const category = new Category({
-      name: req.body.name,
-      description: req.body.description,
-      slug,
-    });
-
     try {
-      await category.save();
+      await Category.create({
+        name: req.body.name,
+        description: req.body.description,
+        slug,
+      });
 
       res.redirect('/dashboard/categories');
     } catch (err) {
@@ -46,7 +46,7 @@ const CategoryController = {
 
   async edit(req, res) {
     try {
-      const category = await Category.findById(req.params.id).exec();
+      const category = await Category.findByPk(req.params.id);
 
       if (!category) {
         return res.status(404).send('Not found');
@@ -70,10 +70,14 @@ const CategoryController = {
     }
 
     try {
-      await Category.findByIdAndUpdate(req.params.id, {
+      await Category.update({
         name: req.body.name,
         description: req.body.description,
         slug,
+      }, {
+        where: {
+          id: req.params.id,
+        },
       });
 
       res.redirect('/dashboard/categories');
@@ -85,7 +89,11 @@ const CategoryController = {
 
   async destroy(req, res) {
     try {
-      await Category.findByIdAndDelete(req.params.id).exec();
+      await Category.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
     } catch (err) {
       console.error(err);
     }

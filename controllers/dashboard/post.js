@@ -1,11 +1,12 @@
-const Category = require('../../database/models/CategorySchema');
-const Post = require('../../database/models/PostSchema');
+const { Category, Post } = require('../../models');
 
 const PostController = {
   async index(req, res) {
-    const posts = await Post.find({})
-      .sort({ createdAt: 'desc' })
-      .exec();
+    const posts = await Post.findAll({
+      order: [
+        ['createdAt', 'DESC'],
+      ],
+    });
 
     res.render('dashboard/post/index', {
       csrfToken: req.csrfToken(),
@@ -15,9 +16,11 @@ const PostController = {
 
   async create(req, res) {
     const [errors] = req.flash('errors');
-    const categories = await Category.find({})
-      .sort({ createdAt: 'desc' })
-      .exec();
+    const categories = await Category.findAll({
+      order: [
+        ['createdAt', 'DESC'],
+      ],
+    });
 
     res.render('dashboard/post/create.hbs', {
       csrfToken: req.csrfToken(),
@@ -28,28 +31,21 @@ const PostController = {
 
   async store(req, res) {
     let { slug } = req.body;
-    let publishedAt = null;
 
     if (!slug) {
       slug = req.body.title.replaceAll(' ', '-').toLowerCase();
     }
 
-    if (req.body.publish) {
-      publishedAt = new Date();
-    }
-
-    const post = new Post({
-      title: req.body.title,
-      brief: req.body.brief,
-      slug,
-      content: req.body.content,
-      category: req.body.category,
-      user: req.user.id,
-      publishedAt,
-    });
-
     try {
-      await post.save();
+      await Post.create({
+        title: req.body.title,
+        brief: req.body.brief,
+        slug,
+        content: req.body.content,
+        categoryId: req.body.category,
+        userId: req.user.id,
+        published: !!req.body.publish,
+      });
 
       res.redirect('/dashboard/posts');
     } catch (err) {
@@ -60,10 +56,12 @@ const PostController = {
 
   async edit(req, res) {
     try {
-      const post = await Post.findById(req.params.id).exec();
-      const categories = await Category.find({})
-        .sort({ createdAt: 'desc' })
-        .exec();
+      const post = await Post.findByPk(req.params.id);
+      const categories = await Category.findAll({
+        order: [
+          ['createdAt', 'DESC'],
+        ],
+      });
 
       if (!post) {
         return res.status(404).send('Not found');
@@ -82,24 +80,23 @@ const PostController = {
 
   async update(req, res) {
     let { slug } = req.body;
-    let publishedAt = null;
 
     if (!slug) {
       slug = req.body.title.replaceAll(' ', '-').toLowerCase();
     }
 
-    if (req.body.publish) {
-      publishedAt = new Date();
-    }
-
     try {
-      await Post.findByIdAndUpdate(req.params.id, {
+      await Post.update({
         title: req.body.title,
         brief: req.body.brief,
         content: req.body.content,
         category: req.body.category,
         slug,
-        publishedAt,
+        published: !!req.body.publish,
+      }, {
+        where: {
+          id: req.params.id,
+        },
       });
 
       res.redirect('/dashboard/posts');
@@ -111,7 +108,11 @@ const PostController = {
 
   async destroy(req, res) {
     try {
-      await Post.findByIdAndDelete(req.params.id).exec();
+      await Post.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
     } catch (err) {
       console.error(err);
     }
